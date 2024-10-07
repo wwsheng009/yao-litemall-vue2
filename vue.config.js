@@ -14,9 +14,20 @@ module.exports = {
     port: 6255,
     proxy: {
       '/wx': {
-        target: 'http://localhost:8080'
+        target: 'http://localhost:5099/api/v1/app/litemall',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/wx': ''
+        }
       },
-    },
+      '/api': {
+        target: 'http://localhost:5099/api',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   chainWebpack: config => {
     config.plugins.delete('prefetch');
