@@ -14,14 +14,14 @@ module.exports = {
     port: 6255,
     proxy: {
       '/wx': {
-        target: 'http://localhost:5099/api/v1/app/litemall',
+        target: 'http://localhost:15099/api/lmall/m',
         changeOrigin: true,
         pathRewrite: {
           '^/wx': ''
         }
       },
       '/api': {
-        target: 'http://localhost:5099/api',
+        target: 'http://localhost:15099/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -29,7 +29,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.plugins.delete('prefetch');
     config.plugins.delete('preload');
   },
@@ -41,7 +41,7 @@ module.exports = {
     },
     optimization: {
       runtimeChunk: {
-        name: entrypoint => `runtime~${entrypoint.name}`
+        name: (entrypoint) => `runtime~${entrypoint.name}`
       },
       splitChunks: {
         minChunks: 2,
@@ -55,8 +55,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data:
-          '@import "@/assets/scss/_var.scss";@import "@/assets/scss/_mixin.scss";'
+        data: '@import "@/assets/scss/_var.scss";@import "@/assets/scss/_mixin.scss";'
       }
     }
   }
