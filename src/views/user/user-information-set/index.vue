@@ -85,7 +85,7 @@ export default {
     },
     loginOut() {
       authLogout().then(res => {
-        removeLocalStorage('Authorization')
+        removeLocalStorage('Mall-Authorization')
         removeLocalStorage('avatar')
         removeLocalStorage('nickName')
         this.$router.push({ name: 'home' });

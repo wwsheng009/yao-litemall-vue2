@@ -27,7 +27,7 @@ export default {
   methods: {
     getLoginStatus() {
       this.isLogin =
-        !!localStorage.getItem('Authorization');
+        !!localStorage.getItem('Mall-Authorization');
     }
   },
 

@@ -89,7 +89,7 @@ export default {
       authLoginByAccount(loginData).then(res => {
         this.userInfo = res.data.data.userInfo;
         setLocalStorage({
-          Authorization: res.data.data.token,
+          'Mall-Authorization': res.data.data.token,
           avatar: this.userInfo.avatarUrl,
           nickName: this.userInfo.nickName
         });

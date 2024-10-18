@@ -10,8 +10,8 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
-    if (!config.headers['X-Litemall-Token']) {
-      config.headers['X-Litemall-Token'] = `${window.localStorage.getItem('Authorization') || ''
+    if (!config.headers['Authorization']) {
+      config.headers['Authorization'] = `Bearer ${window.localStorage.getItem('Mall-Authorization') || ''
         }`;
     }
     return config;
@@ -66,7 +66,7 @@ service.interceptors.response.use(
     console.log('err' + error); // for debug
     const code = error.response.data.code;
     if (code === 401 || code === 402) {
-      Toast.fail('请登录');
+      Toast.fail(error.response.data.message || '请登录');
       setTimeout(() => {
         window.location = '#/login/';
       }, 1500);

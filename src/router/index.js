@@ -16,8 +16,9 @@ const RouterModel = new Router({
 });
 
 RouterModel.beforeEach((to, from, next) => {
-  const { Authorization } = getLocalStorage(
-    'Authorization'
+  const { 'Mall-Authorization': Authorization
+  } = getLocalStorage(
+    'Mall-Authorization'
   );
   if (!Authorization) {
     if (to.meta.login) {

@@ -76,7 +76,7 @@ export default {
   },
 
   data() {
-    const isLogin = !!localStorage.getItem('Authorization');
+    const isLogin = !!localStorage.getItem('Mall-Authorization');
 
     return {
       isLogin,
